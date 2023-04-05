@@ -16,7 +16,7 @@ BarefootAutoTranscriber /download <ModelType>
 - Output will be saved to current directory with <AudioFileName>.txt file name
 - The following model types are available:
 # (tiny[.en], base[.en], small[.en], medium[.en], large)
-- When transcribing, the default model type is tiny.en
+- When transcribing, the default model type is tiny.en if not specified
 ```
 
 ## Development Prerequisites
