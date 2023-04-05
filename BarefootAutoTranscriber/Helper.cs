@@ -63,7 +63,7 @@ namespace BarefootAutoTranscriber
                 await DownloadModel(modelType);
             }
 
-            Console.WriteLine("Processing...");
+            Console.WriteLine($"Processing using {modelType} model...");
             Console.WriteLine(mediaFileName);
             Console.WriteLine();
 
@@ -112,7 +112,5 @@ namespace BarefootAutoTranscriber
 
         private static HttpClient httpClient
             => new HttpClient();
-
-        private const String DefaultModelType = ModelType.TinyEnglish;
     }
 }
