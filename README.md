@@ -14,7 +14,7 @@ BarefootAutoTranscriber /transcribe <MediaFileName> [<ModelType>]
 BarefootAutoTranscriber /download <ModelType>
 - Download model file to current directory
 
-= Note =
+= Notes =
 
 - Output will be saved to current directory as SRT subtitle file
 - If media file is a video, the first track will be used

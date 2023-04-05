@@ -18,7 +18,7 @@ namespace BarefootAutoTranscriber
             Console.WriteLine("- Download model file to current directory");
             Console.WriteLine();
 
-            Console.WriteLine("= Note =");
+            Console.WriteLine("= Notes =");
             Console.WriteLine();
             Console.WriteLine("- Output will be saved to current directory as SRT subtitle file");
             Console.WriteLine("- If media file is a video, the first track will be used");
