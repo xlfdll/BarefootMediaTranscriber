@@ -6,7 +6,22 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PlatformTarget>x64</PlatformTarget>
+    <Title>Barefoot Auto Transcriber</Title>
+    <Company>Xlfdll Workstation</Company>
+    <Product>Barefoot Auto Transcriber</Product>
+    <Authors>Xlfdll</Authors>
+    <Copyright>(C) 2023 Xlfdll Workstation</Copyright>
+    <PackageProjectUrl>https://github.com/xlfdll/BarefootAutoTranscriber</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/xlfdll/BarefootAutoTranscriber</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="WhisperNet" Version="1.11.0" />
