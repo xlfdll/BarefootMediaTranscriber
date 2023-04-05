@@ -22,6 +22,7 @@ namespace BarefootAutoTranscriber
             Console.WriteLine("- Output will be saved to current directory with <AudioFileName>.txt file name");
             Console.WriteLine("- The following model types are available:");
             Console.WriteLine("# (tiny[.en], base[.en], small[.en], medium[.en], large)");
+            Console.WriteLine("- When transcribing, the default model type is tiny.en if not specified");
             Console.WriteLine();
         }
 
