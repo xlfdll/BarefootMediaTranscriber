@@ -11,22 +11,24 @@ namespace BarefootAutoTranscriber
         {
             Console.WriteLine("= Parameters =");
             Console.WriteLine();
-            Console.WriteLine("BarefootAutoTranscriber /transcribe <AudioFileName> [<ModelType>]");
-            Console.WriteLine("- Transcribe audio file");
+            Console.WriteLine("BarefootAutoTranscriber /transcribe <MediaFileName> [<ModelType>]");
+            Console.WriteLine("- Transcribe media file");
             Console.WriteLine();
-            Console.WriteLine("BarefootAutoTranscriber /download <ModelType>");
+            Console.WriteLine("BarefootAutoTranscriber /download [<ModelType>]");
             Console.WriteLine("- Download model file to current directory");
             Console.WriteLine();
 
             Console.WriteLine("= Note =");
-            Console.WriteLine("- Output will be saved to current directory with <AudioFileName>.txt file name");
+            Console.WriteLine();
+            Console.WriteLine("- Output will be saved to current directory as SRT subtitle file");
+            Console.WriteLine("- If media file is a video, the first track will be used");
             Console.WriteLine("- The following model types are available:");
-            Console.WriteLine("# (tiny[.en], base[.en], small[.en], medium[.en], large)");
-            Console.WriteLine("- When transcribing, the default model type is tiny.en if not specified");
+            Console.WriteLine("    tiny[.en], base[.en], small[.en], medium[.en], large");
+            Console.WriteLine("- When transcribing, the default model type is small.en if not specified");
             Console.WriteLine();
         }
 
-        public static async Task DownloadModel(String modelType)
+        public static async Task DownloadModel(String modelType = ModelType.SmallEnglish)
         {
             // https://huggingface.co/ggerganov/whisper.cpp/tree/main
             String url = $"https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-{modelType}.bin";
@@ -37,9 +39,6 @@ namespace BarefootAutoTranscriber
                 Console.WriteLine($"Downloading model ({modelType})...");
 
                 await DownloadFile(url, fileName);
-
-                Console.WriteLine("Done.");
-                Console.WriteLine();
             }
         }
 
@@ -55,38 +54,37 @@ namespace BarefootAutoTranscriber
             }
         }
 
-        public static async Task Transcribe(String mediaFileName, String modelType = "tiny.en")
+        public static async Task Transcribe(String mediaFileName, String modelType = ModelType.SmallEnglish)
         {
-            if (Directory.GetFiles(Environment.CurrentDirectory, "ggml-*.bin").Length > 0)
+            String modelFileName = $"ggml-{modelType}.bin";
+
+            if (!File.Exists(modelFileName))
             {
-                Console.WriteLine("Processing...");
-                Console.WriteLine(mediaFileName);
-                Console.WriteLine();
+                await DownloadModel(modelType);
+            }
 
-                var cancellationToken = new CancellationToken();
-                var library = await Library.loadModelAsync($"ggml-{modelType}.bin", cancellationToken);
-                var context = library.createContext();
-                var mf = Library.initMediaFoundation();
+            Console.WriteLine("Processing...");
+            Console.WriteLine(mediaFileName);
+            Console.WriteLine();
 
-                using iAudioReader reader = mf.openAudioFile(mediaFileName, true);
+            var cancellationToken = new CancellationToken();
+            var library = await Library.loadModelAsync(modelFileName, cancellationToken);
+            var context = library.createContext();
+            var mf = Library.initMediaFoundation();
 
-                context.runFull(reader, progress =>
+            using iAudioReader reader = mf.openAudioFile(mediaFileName, true);
+
+            context.runFull(reader, progress =>
+            {
+                Int32 p = (Int32)(progress * 100);
+
+                if (p % 10 == 0)
                 {
-                    Int32 p = (Int32)(progress * 100);
+                    Console.WriteLine($"{p}% processed.");
+                }
+            });
 
-                    if (p % 10 == 0)
-                    {
-                        Console.WriteLine($"{p}% processed.");
-                    }
-                });
-
-                WriteResultsToSRT(context, mediaFileName);
-            }
-            else
-            {
-                Console.WriteLine("ERROR: No whisper model files found. Use /download switch to download a model file first.");
-                Console.WriteLine();
-            }
+            WriteResultsToSRT(context, mediaFileName);
         }
 
         public static void WriteResultsToSRT(Context context, String audioFileName)
@@ -114,5 +112,7 @@ namespace BarefootAutoTranscriber
 
         private static HttpClient httpClient
             => new HttpClient();
+
+        private const String DefaultModelType = ModelType.TinyEnglish;
     }
 }
