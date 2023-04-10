@@ -11,16 +11,16 @@ This program can only run on Windows 10+ (x64) due to the system requirements of
 BarefootMediaTranscriber /transcribe <MediaFileName> [<ModelType>]
 - Transcribe media file
 
-BarefootMediaTranscriber /download <ModelType>
+BarefootMediaTranscriber /download [<ModelType>]
 - Download model file to current directory
 
 = Notes =
 
 - Output will be saved to current directory as SRT subtitle file
-- If media file is a video, the first track will be used
+- If media file is a video, the first audio track will be used
 - The following model types are available:
     tiny[.en], base[.en], small[.en], medium[.en], large
-- When transcribing, the default model type is small.en if not specified
+  The default model type is small.en if not specified
 ```
 
 ## Development Prerequisites

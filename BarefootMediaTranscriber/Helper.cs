@@ -21,10 +21,10 @@ namespace BarefootMediaTranscriber
             Console.WriteLine("= Notes =");
             Console.WriteLine();
             Console.WriteLine("- Output will be saved to current directory as SRT subtitle file");
-            Console.WriteLine("- If media file is a video, the first track will be used");
+            Console.WriteLine("- If media file is a video, the first audio track will be used");
             Console.WriteLine("- The following model types are available:");
             Console.WriteLine("    tiny[.en], base[.en], small[.en], medium[.en], large");
-            Console.WriteLine("- When transcribing, the default model type is small.en if not specified");
+            Console.WriteLine("  When transcribing, the default model type is small.en if not specified");
             Console.WriteLine();
         }
 
