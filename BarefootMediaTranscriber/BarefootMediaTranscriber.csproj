@@ -6,14 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PlatformTarget>x64</PlatformTarget>
-    <Title>Barefoot Auto Transcriber</Title>
+    <Title>Barefoot Media Transcriber</Title>
     <Company>Xlfdll Workstation</Company>
-    <Product>Barefoot Auto Transcriber</Product>
+    <Product>Barefoot Media Transcriber</Product>
     <Authors>Xlfdll</Authors>
     <Copyright>(C) 2023 Xlfdll Workstation</Copyright>
-    <PackageProjectUrl>https://github.com/xlfdll/BarefootAutoTranscriber</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/xlfdll/BarefootMediaTranscriber</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/xlfdll/BarefootAutoTranscriber</RepositoryUrl>
+    <RepositoryUrl>https://github.com/xlfdll/BarefootMediaTranscriber</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

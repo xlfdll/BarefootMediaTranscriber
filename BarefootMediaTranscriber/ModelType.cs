@@ -1,4 +1,4 @@
-﻿namespace BarefootAutoTranscriber
+﻿namespace BarefootMediaTranscriber
 {
     public static class ModelType
     {

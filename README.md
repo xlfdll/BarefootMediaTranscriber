@@ -1,4 +1,4 @@
-# Barefoot Auto Transcriber
+# Barefoot Media Transcriber
 Automatic English audio transcriber frontend used by Barefoot Invader team.
 
 ## System Requirements
@@ -8,10 +8,10 @@ This program can only run on Windows 10+ (x64) due to the system requirements of
 ```
 = Parameters =
 
-BarefootAutoTranscriber /transcribe <MediaFileName> [<ModelType>]
+BarefootMediaTranscriber /transcribe <MediaFileName> [<ModelType>]
 - Transcribe media file
 
-BarefootAutoTranscriber /download <ModelType>
+BarefootMediaTranscriber /download <ModelType>
 - Download model file to current directory
 
 = Notes =

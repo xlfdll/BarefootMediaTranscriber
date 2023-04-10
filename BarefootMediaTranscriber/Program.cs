@@ -1,6 +1,6 @@
-﻿using BarefootAutoTranscriber;
+﻿using BarefootMediaTranscriber;
 
-Console.WriteLine("Barefoot Auto Transcriber");
+Console.WriteLine("Barefoot Media Transcriber");
 Console.WriteLine("(C) 2023 Xlfdll Workstation");
 Console.WriteLine();
 

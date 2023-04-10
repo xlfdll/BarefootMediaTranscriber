@@ -3,7 +3,7 @@ using System.Text;
 
 using Whisper;
 
-namespace BarefootAutoTranscriber
+namespace BarefootMediaTranscriber
 {
     public static class Helper
     {
@@ -11,10 +11,10 @@ namespace BarefootAutoTranscriber
         {
             Console.WriteLine("= Parameters =");
             Console.WriteLine();
-            Console.WriteLine("BarefootAutoTranscriber /transcribe <MediaFileName> [<ModelType>]");
+            Console.WriteLine("BarefootMediaTranscriber /transcribe <MediaFileName> [<ModelType>]");
             Console.WriteLine("- Transcribe media file");
             Console.WriteLine();
-            Console.WriteLine("BarefootAutoTranscriber /download [<ModelType>]");
+            Console.WriteLine("BarefootMediaTranscriber /download [<ModelType>]");
             Console.WriteLine("- Download model file to current directory");
             Console.WriteLine();
 
