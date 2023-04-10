@@ -44,14 +44,11 @@ namespace BarefootMediaTranscriber
 
         private static async Task DownloadFile(String url, String fileName)
         {
-            using (var response = await httpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead))
-            {
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                using (var fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
-                {
-                    stream.CopyTo(fileStream);
-                }
-            }
+            using var response = await httpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+            using var stream = await response.Content.ReadAsStreamAsync();
+            using var fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
+
+            stream.CopyTo(fileStream);
         }
 
         public static async Task Transcribe(String mediaFileName, String? outputSubtitleFileName = null, String modelType = ModelType.SmallEnglish)
@@ -89,7 +86,7 @@ namespace BarefootMediaTranscriber
 
         public static void WriteResultsToSRT(Context context, String outputSubtitleFileName)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             var segments = context.results(eResultFlags.Timestamps).segments;
 
             for (int i = 0; i < segments.Length; i++)
@@ -110,7 +107,6 @@ namespace BarefootMediaTranscriber
         private static string PrintTimeWithComma(TimeSpan ts)
             => ts.ToString("hh':'mm':'ss','fff", CultureInfo.InvariantCulture);
 
-        private static HttpClient httpClient
-            => new HttpClient();
+        private static HttpClient httpClient => new();
     }
 }
