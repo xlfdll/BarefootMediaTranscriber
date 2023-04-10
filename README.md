@@ -8,7 +8,7 @@ This program can only run on Windows 10+ (x64) due to the system requirements of
 ```
 = Parameters =
 
-BarefootMediaTranscriber /transcribe <MediaFileName> [<ModelType>]
+BarefootMediaTranscriber /transcribe <SourceMediaFileName> [<OutputSubtitleFileName>] [<ModelType>]
 - Transcribe media file
 
 BarefootMediaTranscriber /download [<ModelType>]

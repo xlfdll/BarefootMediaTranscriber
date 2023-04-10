@@ -24,7 +24,11 @@ else
 
             break;
         case "/transcribe":
-            if (args.Length > 2)
+            if (args.Length > 3)
+            {
+                await Helper.Transcribe(args[1], args[2], args[3]);
+            }
+            else if (args.Length > 2)
             {
                 await Helper.Transcribe(args[1], args[2]);
             }
@@ -36,6 +40,7 @@ else
             break;
         default:
             Helper.ShowHelp();
+
             break;
     }
 
