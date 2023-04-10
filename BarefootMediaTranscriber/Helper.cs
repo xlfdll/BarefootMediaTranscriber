@@ -11,7 +11,7 @@ namespace BarefootMediaTranscriber
         {
             Console.WriteLine("= Parameters =");
             Console.WriteLine();
-            Console.WriteLine("BarefootMediaTranscriber /transcribe <MediaFileName> [<ModelType>]");
+            Console.WriteLine("BarefootMediaTranscriber /transcribe <SourceMediaFileName> [<OutputSubtitleFileName>] [<ModelType>]");
             Console.WriteLine("- Transcribe media file");
             Console.WriteLine();
             Console.WriteLine("BarefootMediaTranscriber /download [<ModelType>]");
@@ -54,7 +54,7 @@ namespace BarefootMediaTranscriber
             }
         }
 
-        public static async Task Transcribe(String mediaFileName, String modelType = ModelType.SmallEnglish)
+        public static async Task Transcribe(String mediaFileName, String? outputSubtitleFileName = null, String modelType = ModelType.SmallEnglish)
         {
             String modelFileName = $"ggml-{modelType}.bin";
 
@@ -84,10 +84,10 @@ namespace BarefootMediaTranscriber
                 }
             });
 
-            WriteResultsToSRT(context, mediaFileName);
+            WriteResultsToSRT(context, outputSubtitleFileName ?? Path.ChangeExtension(mediaFileName, ".srt"));
         }
 
-        public static void WriteResultsToSRT(Context context, String audioFileName)
+        public static void WriteResultsToSRT(Context context, String outputSubtitleFileName)
         {
             StringBuilder sb = new StringBuilder();
             var segments = context.results(eResultFlags.Timestamps).segments;
@@ -104,7 +104,7 @@ namespace BarefootMediaTranscriber
                 sb.AppendLine();
             }
 
-            File.WriteAllText(Path.ChangeExtension(audioFileName, ".srt"), sb.ToString());
+            File.WriteAllText(outputSubtitleFileName, sb.ToString());
         }
 
         private static string PrintTimeWithComma(TimeSpan ts)
