@@ -24,7 +24,7 @@ BarefootMediaTranscriber /download [<ModelType>]
 ```
 
 ## Development Prerequisites
-* Visual Studio 2022+ w/ .NET 6
+* Visual Studio 2022+ w/ .NET 8
 
 Before the build,
 * `version.txt` needs to be created with a version number `major.minor` as the contents.
