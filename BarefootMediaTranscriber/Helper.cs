@@ -30,6 +30,11 @@ namespace BarefootMediaTranscriber
 
         public static async Task DownloadModel(String modelType = ModelType.SmallEnglish)
         {
+            if (modelType == ModelType.Large)
+            {
+                modelType = $"{ModelType.Large}-v{ModelType.LargeVersion}";
+            }
+
             // https://huggingface.co/ggerganov/whisper.cpp/tree/main
             String url = $"https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-{modelType}.bin";
             String fileName = $"ggml-{modelType}.bin";

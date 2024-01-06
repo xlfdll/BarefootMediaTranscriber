@@ -13,5 +13,6 @@
         public const String MediumMultilingual = "medium";
 
         public const String Large = "large";
+        public const Int32 LargeVersion = 3;
     }
 }
