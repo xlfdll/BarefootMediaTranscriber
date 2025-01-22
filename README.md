@@ -1,5 +1,5 @@
 # Barefoot Media Transcriber
-Automatic English audio transcriber frontend used by Barefoot Invader team.
+Automatic English audio transcriber frontend used by Barefoot Invader team
 
 ## System Requirements
 This program can only run on Windows 10+ (x64) due to the system requirements of WhisperNet library.
@@ -27,7 +27,7 @@ BarefootMediaTranscriber /download [<ModelType>]
 * Visual Studio 2022+ w/ .NET 8
 
 Before the build,
-* `version.txt` needs to be created with a version number `major.minor` as the contents.
+* `version.txt` needs to be created with a version number (formatted as `major.minor`) as the contents.
 * `generate-build-number.sh` needs to be executed in a Git / Bash shell to generate build information code file (`Directory.Build.props`).
 
 ## External Sources
